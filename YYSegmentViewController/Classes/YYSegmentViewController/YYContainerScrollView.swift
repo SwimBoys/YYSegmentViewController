@@ -13,7 +13,7 @@ import UIKit
 
 open class YYContainerScrollView: UIScrollView {
     /// 配置文件
-    var config: YYSegmentConfig!
+    public var config: YYSegmentConfig!
     /// 代理
     internal weak var dragDeleage: YYContainerScrollViewDagDelegate!
     ///
@@ -29,11 +29,11 @@ open class YYContainerScrollView: UIScrollView {
     
     
     /// scrollview已经到达顶部，再往下滑动的 Y 值
-    var scrollViewDragTopOffsetYBlock: ((UIScrollView, CGFloat) -> Void)?
+    public var scrollViewDragTopOffsetYBlock: ((UIScrollView, CGFloat) -> Void)?
     /// scrollview滑动到最小高度的进度
-    var scrollViewDragToMinimumHeightProgress: ((UIScrollView, CGFloat) -> Void)?
+    public var scrollViewDragToMinimumHeightProgress: ((UIScrollView, CGFloat) -> Void)?
     
-    init(frame: CGRect, config: YYSegmentConfig) {
+    public init(frame: CGRect, config: YYSegmentConfig) {
         super.init(frame: frame)
         self.config = config
         initialize()

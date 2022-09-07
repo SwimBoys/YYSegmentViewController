@@ -21,13 +21,13 @@ import UIKit
 open class YYSegmentedView: UIView {
     
     /// 配置文件
-    var config: YYSegmentConfig!
+    public var config: YYSegmentConfig!
     /// 底部 page 偏移监听
     private let associateScrollerViewObserverKeyPath = "contentOffset"
     /// 底部供其滑动的ScrollView
-    private let segMegmentScrollerView = UIScrollView(frame: CGRect.zero)
+    public  let segMegmentScrollerView = UIScrollView(frame: CGRect.zero)
     /// 底部分割线
-    private let bottomSeparatorLineView = UIView()
+    public  let bottomSeparatorLineView = UIView()
     /// 底部指示标
     public var indicatorView: YYIndicatorView!
     /// 外部关联的ScrollView，就是底部装控制器的ScrollView
@@ -39,9 +39,9 @@ open class YYSegmentedView: UIView {
     
     internal var tabBarItems: [UITabBarItem]!
     /// item 之间的分割view
-    private var separatorViews = [UIView]()
+    public  var separatorViews = [UIView]()
     /// 滚动到的位置 所占 百分比
-    private var totalPercent: CGFloat = 0
+    public  var totalPercent: CGFloat = 0
     /// 点击是否有动画
     public var clickAnimation = true
     /// 当前显示的 item
@@ -63,7 +63,7 @@ open class YYSegmentedView: UIView {
     ///   - frame: frame
     ///   - tabBarItems: tabBarItems
     ///   - config: 配置文件
-    init(frame: CGRect, tabBarItems: [UITabBarItem], config: YYSegmentConfig) {
+    public init(frame: CGRect, tabBarItems: [UITabBarItem], config: YYSegmentConfig) {
         super.init(frame: frame)
         self.config = config
         self.tabBarItems = tabBarItems

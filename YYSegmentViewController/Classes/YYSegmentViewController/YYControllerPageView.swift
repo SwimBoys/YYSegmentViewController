@@ -14,9 +14,9 @@ open class YYControllerPageView: UIScrollView {
     /// item个数
     private var itemCount = 0
     /// 配置文件
-    private var config: YYSegmentConfig!
+    public  var config: YYSegmentConfig!
     /// 初始化
-    init(frame: CGRect, config: YYSegmentConfig) {
+    public init(frame: CGRect, config: YYSegmentConfig) {
         super.init(frame: frame)
         self.config = config
         initSubViews()

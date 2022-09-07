@@ -10,7 +10,7 @@ import UIKit
 open class YYSegmentItemView: UIView {
     
     /// 配置文件
-    var config: YYSegmentConfig!
+    public var config: YYSegmentConfig!
     /// 文本 label
     public let titleLabel = UILabel()
     /// 角标 label
@@ -59,7 +59,7 @@ open class YYSegmentItemView: UIView {
     /// - Parameters:
     ///   - frame: frame
     ///   - config: 配置文件
-    init(frame: CGRect, config: YYSegmentConfig) {
+    public init(frame: CGRect, config: YYSegmentConfig) {
         super.init(frame: frame)
         self.config = config
         initSubView()
@@ -125,7 +125,7 @@ extension YYSegmentItemView {
 // MARK: - badge 相关
 extension YYSegmentItemView {
     /// 返回 badge 的宽度
-    private func getBadgeWidth() -> CGFloat {
+    public func getBadgeWidth() -> CGFloat {
         var width: CGFloat = 0
         if tabBarItem?.badgeValue == nil {
             width = 0
@@ -223,7 +223,7 @@ extension YYSegmentItemView {
     
     /// label 百分比变化
     /// - Parameter percent: percent
-    func percentChange(percent: CGFloat) {
+    public func percentChange(percent: CGFloat) {
         if percent == 1 {
             self.isSelected = true
         } else if percent == 0 {
@@ -234,7 +234,7 @@ extension YYSegmentItemView {
     }
     
     /// titleLabel 改变
-    private func titleLabelCalculation() {
+    public func titleLabelCalculation() {
         let percentConvert = self.percentConvert()
         titleLabel.textColor = interpolationColorFrom(fromColor: config.itemTitleNormalColor, toColor: config.itemTitleSelectColor, percent: percentConvert)
         let scale = 1 + (config.itemTitleSelectedScale - 1) * percentConvert
@@ -245,7 +245,7 @@ extension YYSegmentItemView {
     
     /// 根据 YYSegmentItemViewSelectedStyle 返回 title 文本变化的百分比
     /// - Returns: 百分比
-    private func percentConvert() -> CGFloat {
+    public func percentConvert() -> CGFloat {
         switch config.itemViewSegmentSelectedStyle {
         case .gradient:
             return percent

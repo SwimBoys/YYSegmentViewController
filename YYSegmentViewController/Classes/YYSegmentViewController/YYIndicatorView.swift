@@ -14,7 +14,7 @@ import UIKit
 open class YYIndicatorView: UIView {
     
     /// 配置文件
-    var config: YYSegmentConfig!
+    public var config: YYSegmentConfig!
     /// 容器视图
     public var contentView = UIView()
     /// 代理
@@ -120,13 +120,21 @@ open class YYIndicatorView: UIView {
     /// - Parameters:
     ///   - frame: frame
     ///   - config: 配置文件
-    init(frame: CGRect, config: YYSegmentConfig) {
+    public init(frame: CGRect, config: YYSegmentConfig) {
         super.init(frame: frame)
         self.config = config
         addSubview(contentView)
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
+    
+    /// 初始化
+//    public override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        addSubview(contentView)
+//        contentView.frame = bounds
+//        contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//    }
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

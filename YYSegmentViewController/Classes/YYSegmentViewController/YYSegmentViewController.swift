@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YYSegmentViewController: UIViewController {
+open class YYSegmentViewController: UIViewController {
     
     /// 配置文件
     public var config: YYSegmentConfig!
@@ -18,21 +18,21 @@ class YYSegmentViewController: UIViewController {
     /// 上边装item的容器
     public var segmentCtlView: YYSegmentedView!
     /// scrollview到顶部往下滑动的 Y 值
-    var scrollViewDragTopOffsetYBlock: ((UIScrollView, CGFloat) -> Void)?
+    public var scrollViewDragTopOffsetYBlock: ((UIScrollView, CGFloat) -> Void)?
     /// scrollview滑动到最小高度的进度
-    var scrollViewDragToMinimumHeightProgress: ((UIScrollView, CGFloat) -> Void)?
+    public var scrollViewDragToMinimumHeightProgress: ((UIScrollView, CGFloat) -> Void)?
     /// 判断是否设置frame
     private var isSetFrame = false
     /// 初始化完成，可以再次方法里获取一些view的frame
-    var initDone: (() -> Void)?
+    public var initDone: (() -> Void)?
     
     /// 初始化
-    convenience init(_ config: YYSegmentConfig) {
+    public convenience init(_ config: YYSegmentConfig) {
         self.init()
         self.config = config
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         /// 添加子控件，为了防止viewDidLoad获取到的view的bounds不对
         if !isSetFrame {
@@ -44,7 +44,7 @@ class YYSegmentViewController: UIViewController {
         }
     }
 
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         initSubviews()
