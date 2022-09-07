@@ -1,0 +1,16 @@
+PODS:
+  - YYSegmentViewController (0.1.0)
+
+DEPENDENCIES:
+  - YYSegmentViewController (from `../`)
+
+EXTERNAL SOURCES:
+  YYSegmentViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  YYSegmentViewController: 96d4abc6033203a63e8bc70ac2ba1fee7c9678a4
+
+PODFILE CHECKSUM: a6bcd298a4b3e1ebd66c66ce928e4df570662f5d
+
+COCOAPODS: 1.11.3

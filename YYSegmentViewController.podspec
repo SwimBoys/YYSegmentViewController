@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'YYSegmentViewController'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of YYSegmentViewController.'
+  s.summary          = 'A paging controller encapsulated in swift..'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,16 +21,18 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/yy0325ios@163.com/YYSegmentViewController'
+  s.homepage         = 'https://github.com/SwimBoys/YYSegmentViewController'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'yy0325ios@163.com' => 'yy0325ios@163.com' }
-  s.source           = { :git => 'https://github.com/yy0325ios@163.com/YYSegmentViewController.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/SwimBoys/YYSegmentViewController.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'YYSegmentViewController/Classes/**/*'
+  
+  s.swift_version = "4.2"
   
   # s.resource_bundles = {
   #   'YYSegmentViewController' => ['YYSegmentViewController/Assets/*.png']

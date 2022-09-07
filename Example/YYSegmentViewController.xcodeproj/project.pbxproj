@@ -31,7 +31,7 @@
 		062BC143A85C76D4EFC72504 /* Pods-YYSegmentViewController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSegmentViewController_Tests.release.xcconfig"; path = "Target Support Files/Pods-YYSegmentViewController_Tests/Pods-YYSegmentViewController_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1EF9F3C80E7632F81D718C60 /* Pods-YYSegmentViewController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSegmentViewController_Tests.debug.xcconfig"; path = "Target Support Files/Pods-YYSegmentViewController_Tests/Pods-YYSegmentViewController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2B52BBF475BB2E90B6D6349A /* Pods_YYSegmentViewController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYSegmentViewController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FC67CC06E383B894E77947A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		3FC67CC06E383B894E77947A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* YYSegmentViewController_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YYSegmentViewController_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,10 +42,10 @@
 		607FACE51AFB9204008FA782 /* YYSegmentViewController_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YYSegmentViewController_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		79E089B020EA4C4BD6C4795C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		79E089B020EA4C4BD6C4795C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9027629698B3D6C7185E6DB1 /* Pods_YYSegmentViewController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YYSegmentViewController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2B2F0A4B6848787AC80252 /* Pods-YYSegmentViewController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSegmentViewController_Example.release.xcconfig"; path = "Target Support Files/Pods-YYSegmentViewController_Example/Pods-YYSegmentViewController_Example.release.xcconfig"; sourceTree = "<group>"; };
-		E06A68EA017FA5661D1AAABB /* YYSegmentViewController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = YYSegmentViewController.podspec; path = ../YYSegmentViewController.podspec; sourceTree = "<group>"; };
+		E06A68EA017FA5661D1AAABB /* YYSegmentViewController.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YYSegmentViewController.podspec; path = ../YYSegmentViewController.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F5B90B702CC7ACE9D9364FF3 /* Pods-YYSegmentViewController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YYSegmentViewController_Example.debug.xcconfig"; path = "Target Support Files/Pods-YYSegmentViewController_Example/Pods-YYSegmentViewController_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,6 @@
 				1EF9F3C80E7632F81D718C60 /* Pods-YYSegmentViewController_Tests.debug.xcconfig */,
 				062BC143A85C76D4EFC72504 /* Pods-YYSegmentViewController_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
