@@ -9,21 +9,24 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## 要求
+- iOS 8.0+
+- Xcode 9
+- Swift
 
-## Installation
-
-YYSegmentViewController is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'YYSegmentViewController'
+## 使用CocoaPods安装
+```
+pod 'LLSegmentViewController'
+```
+如果找不见，请输入源地址
+```
+source 'https://github.com/SwimBoys/YYSegmentViewControllerSpec.git'
 ```
 
 ## Author
+yy0325ios@163.com
 
-yy0325ios@163.com, yy0325ios@163.com
-
-## License
-
-YYSegmentViewController is available under the MIT license. See the LICENSE file for more info.
+## 使用讲解，请移步简书查看
+```
+https://www.jianshu.com/p/601679cd1904
+```
