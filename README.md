@@ -27,6 +27,5 @@ source 'https://github.com/SwimBoys/YYSegmentViewControllerSpec.git'
 yy0325ios@163.com
 
 ## 使用讲解，请移步简书查看
-```
+
 https://www.jianshu.com/p/601679cd1904
-```
