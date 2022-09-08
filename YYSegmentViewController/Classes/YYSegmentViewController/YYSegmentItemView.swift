@@ -49,7 +49,7 @@ open class YYSegmentItemView: UIView {
                 let titleLableWidth = self.title.YYGetStrSize(font: config.itemTitleFont * config.itemTitleSelectedScale, w: 1000, h: 1000).width
                 itemWidth = titleLableWidth + getBadgeWidth() + margin
             case .stationary(let margin):
-                itemWidth = margin// + getBadgeWidth()
+                itemWidth = margin
                 break
             }
         }
@@ -68,7 +68,8 @@ open class YYSegmentItemView: UIView {
     func initSubView() {
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: config.itemTitleFont)
-//        titleLabel.numberOfLines = 0
+        titleLabel.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        titleLabel.numberOfLines = 0
         addSubview(titleLabel)
         
         badgeValueLabel.backgroundColor = config.itemBadgeBackgroundColor
@@ -108,13 +109,15 @@ extension YYSegmentItemView {
             break
         case .equalToTitleWidth(margin: _):
             self.widthStyle = config.itemWidthStyle
-            itemWidthChanged?()
         }
+        itemWidthChanged?()
     }
     
     public func titleChange(title: String) {
         self.title = title
         titleLabel.text = title
+        let size = self.title.YYGetStrSize(font: config.itemTitleFont * config.itemTitleSelectedScale, w: 1000, h: 1000)
+        titleLabel.frame.size = size
     }
     
     public func badgeValueChange(badgeValue: String) {
@@ -208,6 +211,7 @@ extension YYSegmentItemView {
             titleLabel.center = CGPoint(x: titleLabel.center.x - badgeMargin - badgeValueLabelFrame.width / 2, y: titleLabel.center.y + config.itemTitleCenterOffsetY)
             badgeValueLabel.center = CGPoint.init(x: titleLabel.frame.maxX + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.center.y)
         }
+        changeBadgeValueLabelCenterX()
     }
 }
 
@@ -215,7 +219,6 @@ extension YYSegmentItemView {
 extension YYSegmentItemView {
     override open func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel.sizeToFit()
         titleLabel.center = CGPoint.init(x: bounds.width / 2, y: bounds.height / 2 + config.itemTitleCenterOffsetY)
         titleLabelCalculation()
         layoutBadgeLabel()
@@ -240,7 +243,13 @@ extension YYSegmentItemView {
         let scale = 1 + (config.itemTitleSelectedScale - 1) * percentConvert
         let font = UIFont.boldSystemFont(ofSize: config.itemTitleFont * scale)
         titleLabel.font = font
-        titleLabel.sizeToFit()
+        changeBadgeValueLabelCenterX()
+    }
+    
+    private func changeBadgeValueLabelCenterX() {
+        let size = self.title.YYGetStrSize(font: titleLabel.font.pointSize, w: 1000, h: 1000)
+        let badgeValueLabelFrame = badgeValueLabel.frame
+        badgeValueLabel.center = CGPoint.init(x: titleLabel.center.x + size.width / 2 + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.center.y)
     }
     
     /// 根据 YYSegmentItemViewSelectedStyle 返回 title 文本变化的百分比
