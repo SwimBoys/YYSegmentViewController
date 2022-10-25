@@ -172,6 +172,9 @@ open class YYSegmentConfig: NSObject {
     /// item 指示标的类型，默认是跟item 文本等宽的横杆，高度为 3
     /// 当设置了此选项中YYIndicatorViewWidthChangeStyle，上边的itemIndicatorViewWidthChangeStyle 就不再起作用
     public var itemIndicatorViewShapeStyle: YYIndicatorViewShapeStyle = .crossBar(widthChangeStyle: .equalToItemWidth(margin: 0), height: 3)
+    /// item 指示标是否占满整个view
+    /// 当 itemIndicatorViewShapeStyle 为 background(color: UIColor, img: UIImage?)时，此值为TRUE，反之为FALSE
+    public var itemIndicatorViewIsFill: Bool = false
         
     // MARK: - item右上角角标 数字或者红点
     /// 角标是否显示

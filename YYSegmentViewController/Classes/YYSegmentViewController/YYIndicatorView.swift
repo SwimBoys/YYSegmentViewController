@@ -70,6 +70,7 @@ open class YYIndicatorView: UIView {
                 selfFrame.size.height = superview?.bounds.height ?? selfFrame.height
                 self.frame = selfFrame
                 self.autoresizingMask = [.flexibleHeight]
+                config.itemIndicatorViewIsFill = true
             case .crossBar(let widthChangeStyle, let height):
                 self.widthChangeStyle = widthChangeStyle
                 self.centerYGradientStyle = .bottom(margin: 0)
@@ -149,6 +150,10 @@ extension YYIndicatorView {
         var selfCenter = self.center
         let leftMargin: CGFloat = leftItemView.frame.minX + leftItemView.titleLabel.center.x
         let rightMargin: CGFloat = rightItemView.frame.minX + rightItemView.titleLabel.center.x
+        if config.itemIndicatorViewIsFill {
+            leftMargin = leftMargin + leftItemView.badgeValueLabel.bounds.width / 2
+            rightMargin = rightMargin + rightItemView.badgeValueLabel.bounds.width / 2
+        }
         
         selfCenter.x = interpolationFrom(from: leftMargin, to: rightMargin, percent: rightItemView.percent)
         self.center = selfCenter

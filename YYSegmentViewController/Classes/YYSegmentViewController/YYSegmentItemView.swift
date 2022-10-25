@@ -247,9 +247,9 @@ extension YYSegmentItemView {
     }
     
     private func changeBadgeValueLabelCenterX() {
-        let size = self.title.YYGetStrSize(font: titleLabel.font.pointSize, w: 1000, h: 1000)
-        let badgeValueLabelFrame = badgeValueLabel.frame
-        badgeValueLabel.center = CGPoint.init(x: titleLabel.center.x + size.width / 2 + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.center.y)
+//        let size = self.title.YYGetStrSize(font: titleLabel.font.pointSize, w: 1000, h: 1000)
+//        let badgeValueLabelFrame = badgeValueLabel.frame
+//        badgeValueLabel.center = CGPoint.init(x: titleLabel.center.x + size.width / 2 + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.center.y)
     }
     
     /// 根据 YYSegmentItemViewSelectedStyle 返回 title 文本变化的百分比
