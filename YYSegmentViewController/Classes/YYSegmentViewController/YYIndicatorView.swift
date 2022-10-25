@@ -148,8 +148,8 @@ extension YYIndicatorView {
     /// 滚动时变化宽度
     internal func reloadLayout(leftItemView: YYSegmentItemView, rightItemView: YYSegmentItemView) {
         var selfCenter = self.center
-        let leftMargin: CGFloat = leftItemView.frame.minX + leftItemView.titleLabel.center.x
-        let rightMargin: CGFloat = rightItemView.frame.minX + rightItemView.titleLabel.center.x
+        var leftMargin: CGFloat = leftItemView.frame.minX + leftItemView.titleLabel.center.x
+        var rightMargin: CGFloat = rightItemView.frame.minX + rightItemView.titleLabel.center.x
         if config.itemIndicatorViewIsFill {
             leftMargin = leftMargin + leftItemView.badgeValueLabel.bounds.width / 2
             rightMargin = rightMargin + rightItemView.badgeValueLabel.bounds.width / 2
