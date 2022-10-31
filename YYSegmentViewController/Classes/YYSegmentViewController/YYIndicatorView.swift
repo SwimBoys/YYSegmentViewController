@@ -151,8 +151,12 @@ extension YYIndicatorView {
         var leftMargin: CGFloat = leftItemView.frame.minX + leftItemView.titleLabel.center.x
         var rightMargin: CGFloat = rightItemView.frame.minX + rightItemView.titleLabel.center.x
         if config.itemIndicatorViewIsFill {
-            leftMargin = leftMargin + leftItemView.badgeValueLabel.bounds.width / 2 + (leftItemView.badgeValueLabel.isHidden ? 0 : (config.itemBadgeValueLabelOffset.x / 2))
-            rightMargin = rightMargin + rightItemView.badgeValueLabel.bounds.width / 2 + (rightItemView.badgeValueLabel.isHidden ? 0 : (config.itemBadgeValueLabelOffset.x / 2))
+            if leftItemView.titleLabel.center.x != leftItemView.bounds.width / 2 {
+                leftMargin = leftMargin + leftItemView.badgeValueLabel.bounds.width / 2 + (leftItemView.badgeValueLabel.isHidden ? 0 : (config.itemBadgeValueLabelOffset.x / 2) + 4 / 2)
+            }
+            if rightItemView.titleLabel.center.x != rightItemView.bounds.width / 2 {
+                rightMargin = rightMargin + rightItemView.badgeValueLabel.bounds.width / 2 + (rightItemView.badgeValueLabel.isHidden ? 0 : (config.itemBadgeValueLabelOffset.x / 2) + 4 / 2)
+            }
         }
         
         selfCenter.x = interpolationFrom(from: leftMargin, to: rightMargin, percent: rightItemView.percent)

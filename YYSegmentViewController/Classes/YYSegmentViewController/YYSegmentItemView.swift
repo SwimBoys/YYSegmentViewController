@@ -161,24 +161,25 @@ extension YYSegmentItemView {
     }
     
     /// 设置 titleLabel 和 badgeValueLabel 的 center
-    internal func layoutBadgeLabel() {
+    internal func layoutTitleLabelAndBadgeLabel() {
         var badgeValueStr = tabBarItem?.badgeValue
-        if config.itemBadgeStyle != .custom {
-            if let badgeValue = badgeValueStr, let intValue = Int(badgeValue) {
-                if intValue > config.itemBadgeValueMaxNum {
-                    badgeValueStr = "\(config.itemBadgeValueMaxNum)+"
-                }
-            }
-        }
-        badgeValueLabel.text = badgeValueStr
-        badgeValueLabel.sizeToFit()
-        
-        var badgeValueLabelFrame = badgeValueLabel.frame
-        if tabBarItem?.badgeValue == nil {
+        if (badgeValueStr == nil) || (badgeValueStr == "") || (badgeValueStr == "0") {
             badgeValueLabel.isHidden = true
             badgeValueLabel.text = ""
+            titleLabel.center = CGPoint.init(x: bounds.width / 2, y: bounds.height / 2 + config.itemTitleCenterOffsetY)
         } else {
             badgeValueLabel.isHidden = false
+            if config.itemBadgeStyle != .custom {
+                if let badgeValue = badgeValueStr, let intValue = Int(badgeValue) {
+                    if intValue > config.itemBadgeValueMaxNum {
+                        badgeValueStr = "\(config.itemBadgeValueMaxNum)+"
+                    }
+                }
+            }
+            badgeValueLabel.text = badgeValueStr
+            badgeValueLabel.sizeToFit()
+            
+            var badgeValueLabelFrame = badgeValueLabel.frame
             if config.itemBadgeStyle == .dots {
                 badgeValueLabelFrame.size = config.itemBadgeSize
                 badgeValueLabel.text = ""
@@ -191,27 +192,29 @@ extension YYSegmentItemView {
                 badgeValueLabel.backgroundColor = .clear
                 badgeValueLabelFrame.size = (badgeValueLabel.text ?? "").YYGetStrSize(font: config.itemBadgeTitleFont, w: 1000, h: 1000)
             }
+            badgeValueLabel.frame = badgeValueLabelFrame
+            badgeValueLabel.layer.cornerRadius = badgeValueLabel.bounds.height / 2
+            badgeValueLabel.clipsToBounds = true
+            
+            
+            let badgeValueLabelMaxWidth: CGFloat = config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width
+            /// 文本 右边间距 够放角标
+            if ((self.bounds.width - titleLabel.bounds.width) / 2) > badgeValueLabelMaxWidth {
+                titleLabel.center = CGPoint.init(x: bounds.width / 2, y: bounds.height / 2 + config.itemTitleCenterOffsetY)
+            } else {
+                if self.bounds.width - badgeValueLabelMaxWidth - titleLabel.bounds.width - 4 < 0 {
+                    titleLabel.center = CGPoint.init(x: bounds.width / 2, y: bounds.height / 2 + config.itemTitleCenterOffsetY)
+                } else {
+                    let x = (self.bounds.width - badgeValueLabelMaxWidth - 4) / 2
+                    titleLabel.center = CGPoint(x: x, y: bounds.height / 2 + config.itemTitleCenterOffsetY)
+                }
+            }
+            if config.itemBadgeStyle == .dots || config.itemBadgeStyle == .round {
+                badgeValueLabel.center = CGPoint.init(x: titleLabel.frame.maxX + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.frame.minY + config.itemBadgeValueLabelOffset.y + badgeValueLabelFrame.height / 2)
+            } else {
+                badgeValueLabel.center = CGPoint.init(x: titleLabel.frame.maxX + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.center.y)
+            }
         }
-        
-        badgeValueLabel.frame = badgeValueLabelFrame
-        badgeValueLabel.layer.cornerRadius = badgeValueLabel.bounds.height / 2
-        badgeValueLabel.clipsToBounds = true
-        
-        var badgeMargin: CGFloat = config.itemBadgeValueLabelOffset.x / 2
-        if (badgeValueStr == nil) || (badgeValueStr == "") {
-            badgeMargin = 0
-        }
-        if config.itemBadgeStyle == .dots {
-            titleLabel.center = CGPoint(x: titleLabel.center.x - badgeMargin - badgeValueLabelFrame.width / 2, y: titleLabel.center.y + config.itemTitleCenterOffsetY)
-            badgeValueLabel.center = CGPoint.init(x: titleLabel.frame.maxX + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.frame.minY + config.itemBadgeValueLabelOffset.y + badgeValueLabelFrame.height / 2)
-        } else if config.itemBadgeStyle == .round {
-            titleLabel.center = CGPoint(x: titleLabel.center.x - badgeMargin - badgeValueLabelFrame.width / 2, y: titleLabel.center.y + config.itemTitleCenterOffsetY)
-            badgeValueLabel.center = CGPoint.init(x: titleLabel.frame.maxX + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.frame.minY + config.itemBadgeValueLabelOffset.y + badgeValueLabelFrame.height / 2)
-        } else {
-            titleLabel.center = CGPoint(x: titleLabel.center.x - badgeMargin - badgeValueLabelFrame.width / 2, y: titleLabel.center.y + config.itemTitleCenterOffsetY)
-            badgeValueLabel.center = CGPoint.init(x: titleLabel.frame.maxX + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.center.y)
-        }
-        changeBadgeValueLabelCenterX()
     }
 }
 
@@ -219,9 +222,8 @@ extension YYSegmentItemView {
 extension YYSegmentItemView {
     override open func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel.center = CGPoint.init(x: bounds.width / 2, y: bounds.height / 2 + config.itemTitleCenterOffsetY)
         titleLabelCalculation()
-        layoutBadgeLabel()
+        layoutTitleLabelAndBadgeLabel()
     }
     
     /// label 百分比变化
@@ -243,13 +245,8 @@ extension YYSegmentItemView {
         let scale = 1 + (config.itemTitleSelectedScale - 1) * percentConvert
         let font = UIFont.boldSystemFont(ofSize: config.itemTitleFont * scale)
         titleLabel.font = font
-        changeBadgeValueLabelCenterX()
-    }
-    
-    private func changeBadgeValueLabelCenterX() {
-//        let size = self.title.YYGetStrSize(font: titleLabel.font.pointSize, w: 1000, h: 1000)
-//        let badgeValueLabelFrame = badgeValueLabel.frame
-//        badgeValueLabel.center = CGPoint.init(x: titleLabel.center.x + size.width / 2 + config.itemBadgeValueLabelOffset.x + badgeValueLabelFrame.width / 2, y: titleLabel.center.y)
+        let size = self.title.YYGetStrSize(font: config.itemTitleFont * config.itemTitleSelectedScale, w: 1000, h: 1000)
+        titleLabel.frame.size.width = size.width
     }
     
     /// 根据 YYSegmentItemViewSelectedStyle 返回 title 文本变化的百分比
